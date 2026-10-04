@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Director Search</h2>
+
+    <form method="POST">
+      <label>Enter Director Name:</label>
+
+      <input type="text" name="director" />
+
+      <button type="submit">Search</button>
+    </form>
+
+    {% if searched %}
+       {% if movies %}
+       <h2>Movies Directed By {{ director_name }}</h2>
+
+    {% for movie in movies %}
+
+    <p>{{ movie["title"] }}</p>
+
+    {% endfor %} {% else %}
+
+    <p>No movies found.</p>
+
+    {% endif %} {% endif %}
+  </body>
+</html>

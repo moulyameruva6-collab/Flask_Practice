@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rating Search</title>
+</head>
+<body>
+
+    <h1>Search Movies by Rating</h1>
+
+    <form method="POST">
+        <label>Enter Rating:</label>
+        <input type="text" name="rating">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if searched %}
+        {% if movies %}
+            <h2>Movies with Rating {{ rating }}</h2>
+
+            {% for movie in movies %}
+                <p>{{ movie.title }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No movies found</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello {{ name }}</h1> 
+  <div>
+     <h2>Student Management Application</h2> 
+    </div> 
+    <div> 
+      {% if name %} 
+         <p>Hello {{ name }}</p> 
+      {% else %} 
+         <p>Hello Dear</p> 
+      {% endif %}
+     </div> 
+     <div> <p>This application can manage the student data</p> 
+    </div> 
+     <div>
+       <p>Module: {{ module }}</p> 
+       <p>Batch: {{ Batch }}</p> 
+       <p>Time: {{ time }}</p> </div> 
+       <div> <ul> <li>All students</li> 
+        <li>Register</li> 
+        <li>Get student data</li>
+         <li>Get class data</li> 
+         <li>Filter students</li> </ul> 
+        </div> 
+        <div> 
+        <a href="/students">All students</a> 
+        <a href="/register">Register</a> 
+        <a href="/class-data">Get Class-Info</a> 
+      </div>
+</body>
+</html>

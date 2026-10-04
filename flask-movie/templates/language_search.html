@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search by Language</title>
+</head>
+<body>
+
+    <h1>Search Movie by Language</h1>
+
+    <form method="POST">
+        <label>Enter Language:</label>
+        <input type="text" name="language" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if searched %}
+
+        {% if movies %}
+
+            <h2>Movies in {{ language }}</h2>
+
+            {% for movie in movies %}
+                <p><b>Title:</b> {{ movie.title }}</p>
+                <p><b>Director:</b> {{ movie.director }}</p>
+                <p><b>Language:</b> {{ movie.language }}</p>
+                <p><b>Genre:</b> {{ movie.genre }}</p>
+                <p><b>Rating:</b> {{ movie.rating }}</p>
+                <p><b>Year:</b> {{ movie.year }}</p>
+                <hr>
+            {% endfor %}
+
+        {% else %}
+
+            <p>No movies found</p>
+
+        {% endif %}
+
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

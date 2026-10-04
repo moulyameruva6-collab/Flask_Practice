@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SM</title>
+  </head>
+  <body>
+    <h2>All Students Data</h2>
+    <hr />
+    {% if students %} {% for id in students %}
+    <p>ID: {{ id}}</p>
+    <p>Name:{{ students[id]['name']}}</p>
+    <p>class:{{ students[id]['class']}}</p>
+    <p>marks:{{ students[id]['Marks']}}</p>
+    {% if students[id]['Marks'] > 40 %}
+    <p>Status: Pass</p>
+    {% else %}
+    <p>Status: Fail</p>
+    {% endif %} {% if students[id]['Marks'] > 70 %}
+    <p>Grade: A</p>
+    {% elif students[id]['Marks'] > 50 %}
+    <p>Grade: B</p>
+    {% elif students[id]['Marks'] >= 35 %}
+    <p>Grade: C</p>
+    {% else %}
+    <p>Grade: Fail</p>
+    {% endif %}
+    <hr />
+    {% endfor %} {% else %}
+    <h3>Students data not found</h3>
+    {% endif %}
+  </body>
+</html>

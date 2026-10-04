@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cls</title>
+  </head>
+  <body>
+    <h2> Get class info</h2>
+    <form action="/class-data" method="POST">
+      <div>
+        <label>class</label>
+        <input type="number" name="class" />
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <div> 
+        {% if students %}
+            <hr>
+            {% for id in students %}
+                <p>Name:{{ students[id]['name']}}</p>
+                <p>class:{{ students[id]['class']}}</p>
+                <p>marks:{{ students[id]['marks']}}</p>
+                <p>----------------------------------------</p>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+   
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>All Movies</h2>
+    {% for movie_id, movie in movies.items() %}
+    <p>ID: {{ movie_id }}</p>
+    <p>Title: {{ movie["title"] }}</p>
+    <p>Director: {{ movie["director"] }}</p>
+    <p>Language: {{ movie["language"] }}</p>
+    <p>Genre: {{ movie["genre"] }}</p>
+    <p>Rating: {{ movie["rating"] }}</p>
+    <p>Year: {{ movie["year"] }}</p>
+    <hr />
+    {% endfor %}
+  </body>
+</html>

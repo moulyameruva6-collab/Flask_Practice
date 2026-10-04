@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Search Movie</h2>
+
+    <form method="POST">
+      <label>Enter Movie ID:</label>
+
+      <input type="text" name="movie_id" />
+
+      <button type="submit">Search Movie</button>
+    </form>
+
+    {% if searched %} 
+       {% if movie %}
+
+    <h2>Movie Found!</h2>
+
+        <p>Title: {{ movie["title"] }}</p>
+        <p>Director: {{ movie["director"] }}</p>
+        <p>Language: {{ movie["language"] }}</p>
+        <p>Genre: {{ movie["genre"] }}</p>
+        <p>Rating: {{ movie["rating"] }}</p>
+        <p>Year: {{ movie["year"] }}</p>
+
+      {% else %}
+
+    <p>Movie not found.</p>
+
+      {% endif %} 
+    {% endif %}
+  </body>
+</html>
