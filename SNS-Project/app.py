@@ -24,7 +24,28 @@ def login():
         return render_template('login.html')
 
     # POST request
-    # login code here
+    
+    if request.method=='POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        status, user = AuthQueries.checkEmailExists(email=email, data=True)
+
+        if status == False:
+            print(user)
+            return redirect('/login')
+        #match password
+        status = validateHashPassword(password=password, hash_password=user['hashpassword'])
+
+        if status == False:
+            print("Password incoorect")
+            return redirect('/login')
+        #redirect to dashboard page
+        return redirect('/dashboard')
+
+
+
+        
+    
 
 
 # Register
@@ -97,26 +118,43 @@ def verify_otp():
     if request.method == 'GET':
         return render_template('verify-otp.html')
 
-    # OTP verification code here
-    if request.method=='POST':
-        otp=int(request.form.get('otp'))
-        #matchotp
+    if request.method == 'POST':
+        otp = int(request.form.get('otp'))
+
         if otp != session['otp']:
             print("OTP Incorrect")
             return redirect('/verify-otp')
-        hash_password=generateHashPassword(password=session['password'])
-        status,msg=AuthQueries.insertUserRecord(username=session['username'],email=session['email'],hash_password=hash_password)
+
+        hash_password = generateHashPassword(
+            password=session['password']
+        )
+
+        status, msg = AuthQueries.insertUserRecord(
+            username=session['username'],
+            email=session['email'],
+            hash_password=hash_password
+        )
 
         if status == False:
             print(msg)
             return redirect('/')
-        print(msg)
-        return redirect ('/login')
 
+        print(msg)
+        return redirect('/login')
+
+#forgot password
+@app.route("/forgot_password", methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'GET':
+        return render_template('forgot_password.html')
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 
 
 if __name__ == "__main__":
     print(createTables())
     app.run(debug=True)
-

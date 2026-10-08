@@ -34,10 +34,10 @@ def generateHashPassword(password: str):
     )
 
 
-def validateHashPassword(password: str, hash_password):
+def validateHashPassword(password, hash_password):
     return bcrypt.checkpw(
-        password.encode('utf-8'),
-        hash_password
+        password.encode(),
+        hash_password.encode()
     )
 
 class EmailTemplates:

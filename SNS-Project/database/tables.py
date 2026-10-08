@@ -7,7 +7,6 @@ def createTables():
 
         users_table_query = """create table if not exists users(
             userid bigint auto_increment primary key,
-            username varchar(100),
             email varchar(50) not null,
             hashpassword varchar(255) not null,
             is_active boolean default true,

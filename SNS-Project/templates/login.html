@@ -7,6 +7,7 @@
 {% block navmenu %}
     <a href="/login">Login</a>
    <a href="/register">Register</a>
+   
 {% endblock %}
 
 {% block content %}
@@ -15,7 +16,7 @@
         <p>login to account to manage your notes and files</p>
 
         <div>
-            <form action="">
+            <form action="/login" method='POST'>
                 
                 <div>
                     <label for="email">Email</label>
@@ -29,7 +30,8 @@
                     <button type="submit">Submit</button>
                 </div>
                 <p>
-                    Don't have account? <a href="/register">Register</a>                                            <
+                    Don't have account? <a href="/register">Register</a> 
+                    <p>Don't have password?<a href="/forgot_password">Forgot Password</a></p>                                           <
                 </p>
             </form>
         </div>
