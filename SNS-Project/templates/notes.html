@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Notes
+{% endblock %}
+
+{% block navmenu %}
+    <a href="/dashboard">Home</a>
+    <a href="#">Files</a>
+    <a href="/dashboard/notes">Notes</a>
+    <a href="#">Profile</a>
+    <a href="/logout">Logout</a>
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+
+    <h2>SNS-Notes</h2>
+
+    <p>Here you can manage your notes. Start by creating your first note.</p>
+
+    <div>
+        <button>
+            <a href="/dashboard/notes/new-notes">My New Notes</a>
+        </button>
+    </div>
+
+    <div>
+        {% if all_notes %}
+
+            {% for note in all_notes %}
+            <div style="border: 1px solid #ccc; padding: 15px; margin: 15px;">
+
+                <div>
+                    <strong>Title:</strong>
+
+                    {% if note.title|length > 50 %}
+                        {{ note.title[:50] }}...
+                    {% else %}
+                        {{ note.title }}
+                    {% endif %}
+                </div>
+
+                <div>
+                    <strong>Content:</strong>
+
+                    {% if note.content|length > 100 %}
+                        {{ note.content[:100] }}...
+                    {% else %}
+                        {{ note.content }}
+                    {% endif %}
+                </div>
+
+                <div style="margin-top: 10px;">
+
+                    <button type="button">
+                        <a href="/dashboard/notes/view/{{ note.notesid }}">
+                            View
+                        </a>
+                    </button>
+                    <button type="button">
+                        <a href="{{ url_for('edit_notes', notesid=note.notesid) }}">Edit</a>
+                        </button>
+
+                    <button type="button">
+                        <a href="{{ url_for('delete_notes', notesid=note.notesid) }}">Delete</a>
+                        </button>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        {% else %}
+            <p>
+                <i>Start creating your first note by clicking on My New Notes.</i>
+            </p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

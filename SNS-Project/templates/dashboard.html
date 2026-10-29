@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <h1>Welcome to SNS Dashboard</h1>
+{% block content %}
 
-    <p>You have successfully logged in.</p>
+<div style="text-align: center;">
 
-    <h2>SNS Application</h2>
+    <h2>Welcome!</h2>
 
-    <p>Manage your students, notes and files.</p>
+    <p>Manage your Notes and Files here.</p>
 
-    <a href="/">Home</a>
+    <div>
+        <h3>Total Notes: {{ total_notes }}</h3>
+        <h3>Total Files: {{ total_files }}</h3>
+    </div>
 
-</body>
-</html>
+    <br>
+
+    <button>
+        <a href="{{ url_for('mynotes') }}">My Notes</a>
+    </button>
+
+    <button>
+        <a href="{{ url_for('myfiles') }}">My Files</a>
+    </button>
+
+</div>
+
+{% endblock %}
